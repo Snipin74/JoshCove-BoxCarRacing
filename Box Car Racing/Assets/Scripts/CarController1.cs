@@ -135,6 +135,7 @@ public class CarController1 : MonoBehaviour
             if (currentWaypoint >= waypoints.Length)
             {
                 currentWaypoint = 0;
+                RaceManager.Instance.LapFinishedByAI(this);
             }
         }
 

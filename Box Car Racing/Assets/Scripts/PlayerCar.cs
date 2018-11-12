@@ -33,6 +33,8 @@ public class PlayerCar : MonoBehaviour
     public Texture2D brakeLightTex;
     public Texture2D ReverseLightTex;
 
+    public Texture2D speedometer;
+    public Texture2D needle;
 
     private void Update()
     {
@@ -203,6 +205,14 @@ public class PlayerCar : MonoBehaviour
             LeftRear.motorTorque = 0;
         }
     }
+    void OnGUI()
+    {
+        GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 150, 300, 150), speedometer);
+        float speedFactor = CurrentSpeed / maxSpeed;
+        float rotationAngle = Mathf.Lerp(0, 180, Mathf.Abs(speedFactor));
+        GUIUtility.RotateAroundPivot(rotationAngle, new Vector2(Screen.width - 150, Screen.height));
+        GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 150, 300, 300), needle);
+    }
 
-   
+
 }
